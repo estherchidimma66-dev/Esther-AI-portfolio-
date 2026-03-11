@@ -7,9 +7,6 @@ This repository contains my portfolio website showcasing:
 - AI Content Repurposing Systems  
 - AI-generated Brand Visuals and Product Photography  
 
-You can view my live portfolio here: [Esther's Portfolio Website](https://github.com/estherchidimma66-dev/Esther-AI-portfolio-.git)
-
----
-
+You can view my live portfolio here: 
 📧 Email: estherchidimma66@gmail.com  
 📱 Phone: +2348165562362
