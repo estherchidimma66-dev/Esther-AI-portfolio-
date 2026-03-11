@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Esther Chidimma | AI Creative Strategist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --gold: #b89a5a;
+    --gold-light: #d4b878;
+    --cream: #f5f0e8;
+    --white: #ffffff;
+    --gray: #888;
+    --card-bg: #111111;
+    --border: rgba(184,154,90,0.2);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--black);
+    color: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+  h1,h2,h3,h4 { font-family: 'Cormorant Garamond', serif; font-weight: 400; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.4rem 5%;
+    background: rgba(10,10,10,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    color: var(--gold);
+    letter-spacing: 0.12em;
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    color: var(--cream); text-decoration: none;
+    font-size: 0.78rem; letter-spacing: 0.15em; text-transform: uppercase;
+    opacity: 0.7; transition: opacity 0.3s, color 0.3s;
+  }
+  .nav-links a:hover { opacity: 1; color: var(--gold); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 8rem 5% 5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 70% 40%, rgba(184,154,90,0.07) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    font-size: 0.72rem; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .hero-eyebrow::before {
+    content: ''; display: block; width: 2.5rem; height: 1px; background: var(--gold);
+  }
+  .hero h1 {
+    font-size: clamp(3.2rem, 7vw, 6.5rem);
+    line-height: 1.05;
+    color: var(--white);
+    max-width: 800px;
+    margin-bottom: 1.8rem;
+  }
+  .hero h1 em { color: var(--gold); font-style: italic; }
+  .hero-sub {
+    font-size: 1rem; color: rgba(245,240,232,0.65);
+    max-width: 480px; line-height: 1.8;
+    margin-bottom: 3rem;
+  }
+  .hero-cta {
+    display: flex; gap: 1.2rem; flex-wrap: wrap;
+  }
+  .btn-primary {
+    display: inline-block; padding: 0.9rem 2.2rem;
+    background: var(--gold); color: var(--black);
+    font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase;
+    text-decoration: none; font-weight: 500;
+    transition: background 0.3s, transform 0.2s;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+  .btn-outline {
+    display: inline-block; padding: 0.9rem 2.2rem;
+    border: 1px solid var(--gold); color: var(--gold);
+    font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase;
+    text-decoration: none; font-weight: 500;
+    transition: background 0.3s, color 0.3s, transform 0.2s;
+  }
+  .btn-outline:hover { background: var(--gold); color: var(--black); transform: translateY(-2px); }
+  .hero-scroll {
+    position: absolute; bottom: 2.5rem; left: 5%;
+    font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: rgba(245,240,232,0.35);
+    display: flex; align-items: center; gap: 0.8rem;
+  }
+  .hero-scroll::after {
+    content: ''; display: block; width: 4rem; height: 1px;
+    background: rgba(245,240,232,0.2);
+  }
+
+  /* SECTION BASE */
+  section { padding: 7rem 5%; }
+  .section-label {
+    font-size: 0.68rem; letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1.2rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .section-label::before {
+    content: ''; display: block; width: 1.5rem; height: 1px; background: var(--gold);
+  }
+  .section-title {
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    color: var(--white); line-height: 1.15; margin-bottom: 3rem;
+  }
+  .divider {
+    width: 100%; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+    margin: 0;
+  }
+
+  /* ABOUT */
+  .about { background: #0d0d0d; }
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 5rem; align-items: start;
+  }
+  .about-text p {
+    color: rgba(245,240,232,0.72); margin-bottom: 1.4rem; font-size: 0.97rem;
+  }
+  .about-text p:last-child { margin-bottom: 0; }
+  .stats-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
+  }
+  .stat-card {
+    border: 1px solid var(--border); padding: 1.8rem;
+    background: var(--card-bg);
+    transition: border-color 0.3s;
+  }
+  .stat-card:hover { border-color: var(--gold); }
+  .stat-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem; color: var(--gold); line-height: 1; margin-bottom: 0.4rem;
+  }
+  .stat-label { font-size: 0.75rem; color: rgba(245,240,232,0.5); letter-spacing: 0.1em; text-transform: uppercase; }
+
+  /* TOOLS */
+  .tools { background: var(--black); }
+  .tools-grid {
+    display: flex; flex-wrap: wrap; gap: 0.8rem;
+    margin-top: 1rem;
+  }
+  .tool-tag {
+    border: 1px solid var(--border);
+    padding: 0.55rem 1.3rem;
+    font-size: 0.78rem; letter-spacing: 0.1em;
+    color: rgba(245,240,232,0.7);
+    transition: border-color 0.3s, color 0.3s, background 0.3s;
+    cursor: default;
+  }
+  .tool-tag:hover { border-color: var(--gold); color: var(--gold); background: rgba(184,154,90,0.05); }
+  .skills-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+  .skill-area h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem; color: var(--gold); margin-bottom: 1.2rem;
+  }
+  .skill-item {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0.7rem 0; border-bottom: 1px solid rgba(184,154,90,0.08);
+    font-size: 0.85rem; color: rgba(245,240,232,0.7);
+  }
+  .skill-dot { width: 6px; height: 6px; background: var(--gold); border-radius: 50%; }
+
+  /* WORK */
+  .work { background: #0d0d0d; }
+  .work-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .work-card {
+    background: var(--card-bg); border: 1px solid var(--border);
+    padding: 2.2rem; position: relative; overflow: hidden;
+    transition: border-color 0.3s, transform 0.3s;
+    display: flex; flex-direction: column;
+  }
+  .work-card:hover { border-color: var(--gold); transform: translateY(-4px); }
+  .work-card-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem; color: rgba(184,154,90,0.12);
+    position: absolute; top: 1rem; right: 1.5rem; line-height: 1;
+  }
+  .work-card h3 {
+    font-size: 1.15rem; color: var(--white); margin-bottom: 0.8rem; line-height: 1.3;
+  }
+  .work-card p { font-size: 0.83rem; color: rgba(245,240,232,0.55); flex: 1; margin-bottom: 1.5rem; }
+  .work-card-link {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    color: var(--gold); font-size: 0.73rem; letter-spacing: 0.2em;
+    text-transform: uppercase; text-decoration: none;
+    border-bottom: 1px solid rgba(184,154,90,0.3); padding-bottom: 0.2rem;
+    transition: border-color 0.3s;
+    width: fit-content;
+  }
+  .work-card-link:hover { border-color: var(--gold); }
+  .work-card-link::after { content: '→'; font-size: 0.9rem; }
+
+  /* IMAGE CARDS */
+  .img-card {
+    background: var(--card-bg); border: 1px solid var(--border);
+    overflow: hidden; transition: border-color 0.3s, transform 0.3s;
+  }
+  .img-card:hover { border-color: var(--gold); transform: translateY(-4px); }
+  .img-card img { width: 100%; display: block; object-fit: cover; }
+  .img-card-body { padding: 1.5rem 1.8rem; }
+  .img-card-tag {
+    font-size: 0.68rem; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.5rem;
+  }
+  .img-card-body h3 { font-size: 1.1rem; color: var(--white); margin-bottom: 0.5rem; }
+  .img-card-body p { font-size: 0.8rem; color: rgba(245,240,232,0.5); }
+
+  /* Visual showcase grid */
+  .visual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1rem; }
+  .visual-top { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+  .full-row { grid-column: 1 / -1; }
+
+  /* AI VIDEO CARD */
+  .ai-video-card {
+    background: var(--card-bg); border: 1px solid var(--border);
+    overflow: hidden; transition: border-color 0.3s;
+  }
+  .ai-video-card:hover { border-color: var(--gold); }
+  .ai-video-card img { width: 100%; height: 300px; object-fit: cover; object-position: top; display: block; }
+  .ai-video-card-body { padding: 1.8rem 2rem; }
+  .ai-video-card-body .tag {
+    font-size: 0.68rem; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.6rem;
+  }
+  .ai-video-card-body h3 { font-size: 1.3rem; color: var(--white); margin-bottom: 0.6rem; }
+  .ai-video-card-body p { font-size: 0.83rem; color: rgba(245,240,232,0.55); }
+
+  /* CONTACT */
+  .contact { background: var(--black); }
+  .contact-inner {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start;
+  }
+  .contact-info h2 { font-size: clamp(1.8rem, 3.5vw, 2.8rem); color: var(--white); margin-bottom: 1rem; }
+  .contact-info p { color: rgba(245,240,232,0.6); font-size: 0.93rem; margin-bottom: 2.5rem; }
+  .contact-detail {
+    display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2.5rem;
+  }
+  .contact-detail a {
+    color: var(--cream); text-decoration: none; font-size: 0.9rem;
+    display: flex; align-items: center; gap: 0.8rem;
+    transition: color 0.3s;
+  }
+  .contact-detail a:hover { color: var(--gold); }
+  .contact-detail a span {
+    font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); width: 4.5rem;
+  }
+  .availability {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    padding: 0.5rem 1.2rem; border: 1px solid rgba(90,184,120,0.3);
+    font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: #7dd99a;
+  }
+  .availability::before {
+    content: ''; width: 7px; height: 7px; border-radius: 50%;
+    background: #7dd99a; display: block;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  /* CTA BANNER */
+  .cta-banner {
+    background: var(--gold);
+    padding: 5rem 5%;
+    text-align: center;
+  }
+  .cta-banner h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--black); margin-bottom: 1rem;
+  }
+  .cta-banner p { color: rgba(10,10,10,0.65); font-size: 0.95rem; margin-bottom: 2.5rem; }
+  .btn-dark {
+    display: inline-block; padding: 1rem 2.8rem;
+    background: var(--black); color: var(--gold);
+    font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase;
+    text-decoration: none; font-weight: 500;
+    transition: background 0.3s, transform 0.2s;
+  }
+  .btn-dark:hover { background: #1a1a1a; transform: translateY(-2px); }
+
+  /* FOOTER */
+  footer {
+    background: #060606; padding: 2.5rem 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    border-top: 1px solid var(--border);
+  }
+  footer p { font-size: 0.75rem; color: rgba(245,240,232,0.3); }
+  .footer-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem; color: var(--gold); letter-spacing: 0.1em;
+  }
+
+  @media (max-width: 900px) {
+    .about-grid, .contact-inner, .skills-cols { grid-template-columns: 1fr; gap: 3rem; }
+    .work-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+    .visual-grid, .visual-top { grid-template-columns: 1fr; }
+    .stats-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+
+<style>
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    margin: 0;
+    background: #ffffff;
+    color: #111;
+    line-height: 1.6;
+}
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 40px 20px;
+}
+h1, h2, h3 {
+    margin-bottom: 10px;
+}
+.hero {
+    padding: 80px 20px;
+    text-align: center;
+    background: #f7f7f7;
+}
+.hero h1 {
+    font-size: 42px;
+}
+.hero p {
+    font-size: 18px;
+}
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+}
+.card {
+    border: 1px solid #eee;
+    border-radius: 10px;
+    padding: 20px;
+    background: #fff;
+}
+img {
+    max-width: 100%;
+    border-radius: 8px;
+}
+.tools {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.tool {
+    background: #f1f1f1;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+}
+.contact {
+    text-align: center;
+    padding: 60px 20px;
+    background: #fafafa;
+}
+a.button {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 12px 20px;
+    background: #111;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+}
+</style>
+
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">Esther C.</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="btn-primary" style="font-size:0.72rem; padding: 0.65rem 1.6rem;">Hire Me</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">AI Creative Strategist &amp; Prompt Engineer</div>
+  <h1>Where <em>strategy</em> meets the future of content.</h1>
+  <p class="hero-sub">I help AI and tech brands create content systems, visual assets, and prompt frameworks that actually convert. Based in Nigeria. Available globally.</p>
+  <div class="hero-cta">
+    <a href="#work" class="btn-primary">View My Work</a>
+    <a href="#contact" class="btn-outline">Get in Touch</a>
+  </div>
+  <div class="hero-scroll">Scroll to explore</div>
+</section>
+<div class="divider"></div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-label">About</div>
+  <div class="about-grid">
+    <div class="about-text">
+      <h2 class="section-title">The strategist behind the content.</h2>
+      <p>I'm Esther Chidimma, an AI Creative Strategist and Prompt Engineer with a sharp eye for what makes content work. I specialize in designing AI-powered content systems, building prompt libraries, and creating brand visuals using generative tools that most people are still figuring out.</p>
+      <p>My work spans full brand development, social media strategy, AI video and image production, and prompt engineering for real business outcomes. I've built campaigns, content playbooks, and visual identities from scratch, all using AI as the engine.</p>
+      <p>I'm currently open to full-time remote roles with AI and tech startups that want someone who knows how to make these tools do serious work.</p>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-number">12+</div>
+        <div class="stat-label">AI Tools Mastered</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">4</div>
+        <div class="stat-label">Brand Case Studies Built</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">90</div>
+        <div class="stat-label">Video Scripts Written</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">100%</div>
+        <div class="stat-label">Remote Ready</div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="divider"></div>
+
+<!-- SKILLS AND TOOLS -->
+<section class="tools" id="skills">
+  <div class="section-label">Skills &amp; Tools</div>
+  <h2 class="section-title">What I bring to the table.</h2>
+  <div class="skills-cols">
+    <div class="skill-area">
+      <h4>What I Do</h4>
+      <div class="skill-item"><span>AI Content Strategy</span><div class="skill-dot"></div></div>
+      <div class="skill-item"><span>Prompt Engineering</span><div class="skill-dot"></div></div>
+      <div class="skill-item"><span>AI Image &amp; Video Production</span><div class="skill-dot"></div></div>
+      <div class="skill-item"><span>Brand Identity Development</span><div class="skill-dot"></div></div>
+      <div class="skill-item"><span>Social Media Management</span><div class="skill-dot"></div></div>
+      <div class="skill-item"><span>Content Repurposing Systems</span><div class="skill-dot"></div></div>
+      <div class="skill-item"><span>UGC &amp; AI Model Direction</span><div class="skill-dot"></div></div>
+    </div>
+    <div class="skill-area">
+      <h4>Tools I Use</h4>
+      <div class="tools-grid">
+        <span class="tool-tag">Claude</span>
+        <span class="tool-tag">ChatGPT</span>
+        <span class="tool-tag">Grok</span>
+        <span class="tool-tag">Google Gemini</span>
+        <span class="tool-tag">Google Whisk</span>
+        <span class="tool-tag">ImageFX</span>
+        <span class="tool-tag">Veo 3</span>
+        <span class="tool-tag">Kling AI</span>
+        <span class="tool-tag">Hailuo AI</span>
+        <span class="tool-tag">Sora</span>
+        <span class="tool-tag">Adobe Firefly</span>
+        <span class="tool-tag">CapCut</span>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="divider"></div>
+
+<!-- WORK -->
+<section class="work" id="work">
+  <div class="section-label">Selected Work</div>
+  <h2 class="section-title">Work that speaks for itself.</h2>
+
+  <!-- Document portfolio cards -->
+  <div class="work-grid" style="margin-bottom: 3rem;">
+
+    <div class="work-card">
+      <div class="work-card-num">01</div>
+      <h3>AI Content Repurposing System</h3>
+      <p>A structured framework for turning one piece of content into multiple platform-ready formats using AI, built for efficiency and brand consistency.</p>
+      <a href="https://drive.google.com/file/d/1KQ4YmOxtErt9C-zirHWmI0rn5R-TcYXh/view?usp=drivesdk" target="_blank" class="work-card-link">View Document</a>
+    </div>
+
+    <div class="work-card">
+      <div class="work-card-num">02</div>
+      <h3>Prompt Transformation Framework</h3>
+      <p>A replicable system for turning vague ideas into high-quality, precision prompts across creative and strategic use cases.</p>
+      <a href="https://drive.google.com/file/d/1nx3ajSLtRSyEQinihiYLlEv1QSbXHRjF/view?usp=drivesdk" target="_blank" class="work-card-link">View Document</a>
+    </div>
+
+    <div class="work-card">
+      <div class="work-card-num">03</div>
+      <h3>Social Media Prompt Playbook</h3>
+      <p>A ready-to-use library of prompt templates for social media content creation, built around real platform behavior and audience psychology.</p>
+      <a href="https://drive.google.com/file/d/15vaqZ3WtQwFouAe-5HdNEhXZT_dnLtX2/view?usp=drivesdk" target="_blank" class="work-card-link">View Document</a>
+    </div>
+
+  </div>
+
+  <!-- AI VIDEO CARD -->
+  <div class="ai-video-card" style="margin-bottom: 3rem;">
+    <img src="ai-video-scene.jpg" alt="AI video scene" class="ai-video">
+    <div class="ai-video-card-body">
+      <div class="tag">AI Video Production</div>
+      <h3>Talking Head Videos, Generated with AI</h3>
+      <p>Full AI-generated video content built for social media platforms, from ideation and scripting to on-screen delivery. This is AI video production that looks and feels like real creator content, not a robot reading a script.</p>
+    </div>
+  </div>
+
+  <!-- BRAND AND PRODUCT VISUALS -->
+  <div class="section-label" style="margin-bottom: 1.5rem;">Brand Visuals</div>
+
+  <!-- Model Osei -->
+  <div class="img-card" style="margin-bottom: 1.5rem; display: grid; grid-template-columns: 1fr 1fr;">
+    <img src="ai-video-scene.jpg" alt="AI video scene" class="ai-video">
+    <div class="img-card-body" style="padding: 3rem;">
+      <div class="img-card-tag">Tacé Brand. AI UGC Model</div>
+      <h3 style="font-size: 1.6rem; margin-bottom: 1rem;">Model Osei</h3>
+      <p style="font-size: 0.9rem; line-height: 1.9;">Osei is the AI-generated UGC model created for Tacé, a luxury women's heel brand built entirely with AI. From her character bible to her visual identity, every detail was engineered to embody the brand's aesthetic. She exists to model, promote, and personify Tacé's world.</p>
+      <div style="margin-top: 1.5rem; font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold);">Brand Developed with Claude AI</div>
+    </div>
+  </div>
+
+  <!-- Product Photography Grid -->
+  <div class="section-label" style="margin-bottom: 1.5rem; margin-top: 2rem;">AI Product Photography. Tacé Footwear</div>
+  <div class="visual-grid">
+    <div class="img-card">
+      <img src="ai-video-scene.jpg" alt="AI video scene" class="ai-video">
+      <div class="img-card-body">
+        <div class="img-card-tag">AI Image. Whisk</div>
+        <h3>The Tacé Sandal</h3>
+        <p>Warm-toned product photography generated using Whisk, built for e-commerce and editorial use.</p>
+      </div>
+    </div>
+    <div class="img-card">
+      <img src="ai-video-scene.jpg" alt="AI video scene" class="ai-video">
+      <div class="img-card-body">
+        <div class="img-card-tag">AI Image. Whisk</div>
+        <h3>The Tacé Heel</h3>
+        <p>Luxury slingback heel photography in ivory and gold, shot entirely in AI for the Tacé catalogue.</p>
+      </div>
+    </div>
+  </div>
+
+</section>
+<div class="divider"></div>
+
+<!-- CTA BANNER -->
+<section class="cta-banner">
+  <h2>Ready to build something worth seeing?</h2>
+  <p>Whether you need a content system, a prompt framework, or a full AI brand, let's talk.</p>
+  <a href="#contact" class="btn-dark">Start a Conversation</a>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div class="contact-info">
+      <div class="section-label">Contact</div>
+      <h2>Let's work together.</h2>
+      <p>I'm open to full-time remote roles with AI and tech startups, as well as freelance projects in content strategy, prompt engineering, and AI creative production.</p>
+      <div class="contact-detail">
+        <a href="mailto:estherchidimma66@gmail.com">
+          <span>Email</span> estherchidimma66@gmail.com
+        </a>
+        <a href="tel:+2348165562362">
+          <span>Phone</span> +234 816 556 2362
+        </a>
+      </div>
+      <div class="availability">Available for New Opportunities</div>
+    </div>
+    <div>
+      <div class="section-label">Quick Summary</div>
+      <div style="display: flex; flex-direction: column; gap: 1.2rem; margin-top: 0.5rem;">
+        <div class="stat-card">
+          <div style="font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem;">Role</div>
+          <div style="font-size: 0.92rem;">AI Creative Strategist &amp; Prompt Engineer</div>
+        </div>
+        <div class="stat-card">
+          <div style="font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem;">Location</div>
+          <div style="font-size: 0.92rem;">Nigeria. Open to remote worldwide.</div>
+        </div>
+        <div class="stat-card">
+          <div style="font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem;">Availability</div>
+          <div style="font-size: 0.92rem;">Full-time remote. Freelance projects.</div>
+        </div>
+        <div class="stat-card">
+          <div style="font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem;">Specialties</div>
+          <div style="font-size: 0.92rem;">AI content systems. Prompt engineering. Brand development.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-brand">Esther Chidimma</div>
+  <p>AI Creative Strategist. Based in Nigeria.</p>
+  <p style="font-size: 0.72rem; color: rgba(245,240,232,0.2);">&copy; 2026</p>
+</footer>
+
+</body>
+</html>
